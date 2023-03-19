@@ -1,8 +1,8 @@
 import WheelDigit from "./components/WheelDigit";
-
+import DisplayFace from "./components/DisplayFace";
 export default function App() {
   return (
-    <div><WheelDigit/><WheelDigit/>:<WheelDigit/><WheelDigit/>.<WheelDigit/><WheelDigit/></div>
+    <DisplayFace/>
   );
 }
 

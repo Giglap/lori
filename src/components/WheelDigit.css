@@ -1,7 +1,9 @@
-.box {
+
+  .inner-container {
     background-color: white;
-    border: 1px solid black;
-    width: 8px;
+    /* border: 1px solid black; */
+    width: 8PX;
     height: 100%;
-    overflow: hidden;
+    cursor: default;
 }
+
