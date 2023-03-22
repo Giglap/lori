@@ -1,32 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { forwardRef, useImperativeHandle } from 'react';
 import "./WheelDigit.css";
 
-export default function WheelDigit() {
+export default function WheelDigit(props) {
     const [digit, setDigit] = useState(0);
-
+    const incRef = useRef(null);
+    let rollover = props.rollover;
+    if(rollover==undefined){rollover = 10;}
     function handleMouseWheel(event){
-        // event.preventDefault();
-        // event.stopPropagation();
-        // event.nativeEvent.stopImmediatePropagation();
-        
         if(event.deltaY>0){
-            digit < 1 ? setDigit(9):setDigit(digit-1);
+            increment();
         } else {
-            digit > 8 ? setDigit(0):setDigit(digit+1);
-        }
-        console.log(0);
-        if(event.deltaX>0){
-            digit < 1 ? setDigit(9):setDigit(digit-1);
-        } else {
-            digit > 8 ? setDigit(0):setDigit(digit+1);
+            decrement();
         }
     }
-
+    function increment(){
+        digit < 1 ? setDigit(rollover-1):setDigit(digit-1);
+    }
+    function decrement(){
+        digit > rollover-2 ? setDigit(0):setDigit(digit+1);
+    }
     const handleMouseEnter = () => {
         document.body.style.overflow = 'hidden';
       }
     
-      const handleMouseLeave = () => {
+    const handleMouseLeave = () => {
         document.body.style.overflow = 'auto';
       }
     
@@ -36,6 +34,7 @@ export default function WheelDigit() {
             onWheel={handleMouseWheel} 
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            ref={incRef}
             >
                 {digit}
             </div>
