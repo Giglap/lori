@@ -6,6 +6,7 @@ const WheelDigit = React.forwardRef((props, ref) => {
    // Assign the method to the ref
     useImperativeHandle(ref, () => ({
         increment,
+        decrement
     }));
     const [digit, setDigit] = useState(0);
     const incRef = useRef(null);

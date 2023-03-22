@@ -4,6 +4,9 @@ import "./DisplayFace.css";
 
 export default function DisplayFace(){
     const digitRef = useRef(null);
+    function bDn(){
+        digitRef.current.decrement();
+    }
     function bUp(){
         digitRef.current.increment();
     }
@@ -15,6 +18,7 @@ export default function DisplayFace(){
             rollover="6"
             ref={digitRef}
         />
-        <WheelDigit/><button/>
+        <WheelDigit/>
+        <button onClick={bDn}/>
         </div>
 }
