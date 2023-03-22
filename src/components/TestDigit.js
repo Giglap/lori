@@ -5,7 +5,7 @@ import { forwardRef, useImperativeHandle } from 'react';
 const TestDigit = React.forwardRef((props, ref) => {
     // Assign the method to the ref
     useImperativeHandle(ref, () => ({
-      doSomething,
+      doSomething
     }));
     const [title, setTitle] = useState('default')
     // Define the method to be called from the parent component

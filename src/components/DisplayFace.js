@@ -7,7 +7,7 @@ export default function DisplayFace(){
     function bUp(){
         digitRef.current.increment();
     }
- 
+//  ========================================================
     return <div className="display-face">
 
         <button onClick={bUp}/>

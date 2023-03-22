@@ -2,7 +2,11 @@ import React, { useState, useRef } from 'react';
 import { forwardRef, useImperativeHandle } from 'react';
 import "./WheelDigit.css";
 
-export default function WheelDigit(props) {
+const WheelDigit = React.forwardRef((props, ref) => {
+   // Assign the method to the ref
+    useImperativeHandle(ref, () => ({
+        increment,
+    }));
     const [digit, setDigit] = useState(0);
     const incRef = useRef(null);
     let rollover = props.rollover;
@@ -15,10 +19,10 @@ export default function WheelDigit(props) {
         }
     }
     function increment(){
-        digit < 1 ? setDigit(rollover-1):setDigit(digit-1);
+        digit > rollover-2 ? setDigit(0):setDigit(digit+1);
     }
     function decrement(){
-        digit > rollover-2 ? setDigit(0):setDigit(digit+1);
+        digit < 1 ? setDigit(rollover-1):setDigit(digit-1);
     }
     const handleMouseEnter = () => {
         document.body.style.overflow = 'hidden';
@@ -39,4 +43,5 @@ export default function WheelDigit(props) {
                 {digit}
             </div>
     );
-  }
+  });
+  export default WheelDigit
